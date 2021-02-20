@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Mail Spyer</title>
+        <link rel="icon" href="/img/favicon.png">
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+    <body>
+        <h2>LA PAGE S'ACTUALISE AUTOMATIQUEMENT</h2>
+        <p>Actualiser la page va briser la connexion au socket, ce qui aura pour effet de perdre les données. Ces dernières seront alors irrécupérables.</p>
+        <div class="divider"></div>
+        <button onclick="addMail()" class="bigbutton">Ajouter un mail</button>
+            <div style="width: 100%; display: flex; justify-content: space-between;">
+                <div style="width: 5%">
+                    <p>Rang</p>
+                </div>
+                <div style="width: 70%">
+                    <p>URL</p>
+                </div>
+                <div style="width: 8%">
+                    <p>Nombre d'ouvertures</p>
+                </div>
+                <div STYLE="width: 17%;">
+
+                </div>
+            </div>
+            
+        <div id="mails" class="mail__list">
+            
+        </div>
+        <script id="mail-template" type="text/html">
+            <div class="mail">
+                <p style="width: 5%">{{mailPos}}</p>
+                <span class="input">
+                    <input id={{mailID}} disabled value={{URL}} />
+                    <button onclick=copyText("{{mailID}}") class="copy">Copier</button>
+                </span>
+                <p class="timeOpened" id="{{mailID}}TO">{{timeOpened}}</p>
+                <div style="width: 17%">
+                    <button onclick=resetMail("{{mailID}}")>Reset</button>
+                    <button class="button_danger" onclick=removeMail("{{mailID}}")>Delete</button>
+                </div>
+            </div>
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
+    </body>
+</html>
